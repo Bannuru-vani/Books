@@ -1,0 +1,70 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  margin: 0px auto;
+  /* margin-top:65px; */
+}
+.heading {
+  font-weight: 700;
+  text-align: center;
+}
+.txtfields {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 50px;
+}
+.textgoo {
+  text-align: center;
+  font-size: 18px;
+  color: black;
+}
+.button-con {
+  margin-top: 20px !important;
+  background-image: linear-gradient(
+    to right,
+    rgb(33, 33, 228),
+    rgb(97, 97, 219)
+  );
+  text-transform: capitalize !important;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+}
+.button-style {
+  height: 30px;
+  width: 100px;
+  border: none;
+  color: white;
+}
+.increment {
+  background-color: green;
+}
+.decrement {
+  background-color: red;
+}
+.Counter-App {
+  height: 300px;
+  padding: 50px;
+}
+
+.reset {
+  background-color: gray;
+}
+.gallery-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.image-sty {
+  height: 300px;
+  width: 500px;
+  border-radius: 20px;
+}
