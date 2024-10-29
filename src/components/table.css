@@ -1,0 +1,24 @@
+table,td,th{
+    border:1px solid ;
+    width:800px;
+    text-align: center;  
+
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+.header{
+    text-align: center;
+}
+.pagination{
+    margin-top:20px;
+    text-align: center;
+}
+.button-styless{
+    width:100px;
+  margin:10px;
+  font-size: 20px;
+    padding:10px;
+    text-align: center;
+}

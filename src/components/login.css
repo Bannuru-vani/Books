@@ -30,41 +30,4 @@
   );
   text-transform: capitalize !important;
 }
-.buttons {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  justify-content: center;
-}
-.button-style {
-  height: 30px;
-  width: 100px;
-  border: none;
-  color: white;
-}
-.increment {
-  background-color: green;
-}
-.decrement {
-  background-color: red;
-}
-.Counter-App {
-  height: 300px;
-  padding: 50px;
-}
 
-.reset {
-  background-color: gray;
-}
-.gallery-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-.image-sty {
-  height: 300px;
-  width: 500px;
-  border-radius: 20px;
-}

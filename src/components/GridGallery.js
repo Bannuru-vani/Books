@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./gallery.css";
-function Gallery() {
+import "./gridgallery.css";
+function GridGallery() {
   const [data, setData] = useState([]);
   useEffect(() => {
     const url = "https://picsum.photos/v2/list";
@@ -24,4 +24,4 @@ function Gallery() {
     </div>
   );
 }
-export default Gallery;
+export default GridGallery;

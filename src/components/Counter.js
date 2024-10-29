@@ -1,14 +1,22 @@
 import React, { useState } from "react";
-import "./login.css";
+import "./counter.css";
 import { textAlign } from "@mui/system";
 function Counter() {
   const [count, setCount] = useState(1);
   const addCount = () => {
-    setCount(count + 1);
+   // setCount(count + 1);
+   setCount((prev) => prev +1)
   };
 
   const decCount = () => {
-    setCount(count - 1);
+    if(count < 0){
+        setCount(0)
+    }
+    else{
+//   setCount(count - 1);
+setCount((prev) => prev -1)
+    }
+  
   };
   const resetCount = () => {
     console.log("jj");
@@ -32,9 +40,10 @@ function Counter() {
     </div>
   );
 }
-export default Counter;
+export default Counter; 
 //hu do now once here
-
+// Did you login? yes. neku open cheste ne loginayyinte ne ga repo create chesav mari login lekunte ela chesav repo 
+// adi kaadu brouser lo es browser lo vachindi ga adi login chesava akkada chyyaledu ennu chrome lo chesa
 // This must work dontknow why not working
 // you can do -> control + shift + P -> format document
 // then it will format, format on save not working somehow

@@ -1,0 +1,26 @@
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+}
+.button-style {
+  height: 30px;
+  width: 100px;
+  border: none;
+  color: white;
+}
+.increment {
+  background-color: green;
+}
+.decrement {
+  background-color: red;
+}
+.Counter-App {
+  height: 300px;
+  padding: 50px;
+}
+
+.reset {
+  background-color: gray;
+}
