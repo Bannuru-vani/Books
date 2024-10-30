@@ -2,54 +2,40 @@ import React, { useState, useEffect } from "react";
 import { FaPlusSquare } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import "./todo.css";
-function Todo() {
+function TodoNew() {
   const [todos, setTodos] = useState("");
   const [todoList, setTodoList] = useState([]);
-  const [error,setError] = useState(false);
-  const handleChange = (e) => {debugger;
-            setTodos(e.target.value);
-            
-            if(e.target.value.length >=1){
-                setError(false)
-            }
-  }
-  const addTodos = () => {
-    if(todos ===""){
-setError(!error);
-return;
-    };
-    let updatedList = [...todoList, todos]
-    setTodoList(updatedList);
-    localStorage.setItem("todoList", JSON.stringify(updatedList));
-  };
+  const [error, setError] = useState(false);
+  const handleChange = (e) => {
+   
+    setTodos(e.target.value);
 
-
-
-  useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("todoList")) || [];
-    debugger;
-    console.log(items, "item");
-
-    if (items.length) { // lenth use cheste list unte update aytailekunte ledu
-         
-      setTodoList(items);
+    if (e.target.value.length >= 1) {
+      setError(false);
     }
-    // items [] vastadi
-    // if([]) // true ne iostadi
-    // sorry 
-  }, []);
+  };
+  const addTodos = () => {
+    if (todos === "") {
+      setError(!error);
+      return;
+    }
+    let updatedList = [...todoList, todos];
+    setTodoList(updatedList)
+     localStorage.setItem(
+      "todoList",
+      JSON.stringify(updatedList)
+    );
+  };
+  useEffect(() => {
+    const getData = JSON.parse(localStorage.getItem(todoList)) || [];
+    if (getData.length) {
+      setTodoList(getData);
+    }
+  });
 
-  console.log(todoList)
-  //     const getStorageValue = () => {
-  // const dataSaved = localStorage.getItem("todoList")
-  //     const initialValue = JSON.parse(dataSaved);
-  //     console.log(initialValue,"ini")
-  //     return initialValue || "";
-  //     }
-  //     console.log(getStorageValue())
+  console.log(todoList);
 
   const handleDelete = (index) => {
-    // same way ikkada kuda add lo laga
     setTodoList(todoList.filter((_, id) => id !== index));
   };
   return (
@@ -67,7 +53,7 @@ return;
             <FaPlusSquare />
           </button>
         </div>
-        <p>{error ? "please add todo" :""}</p>
+        <p>{error ? "please add todo" : ""}</p>
         {todoList.map((item, index) => (
           <div key={index} className="todo-item">
             <p className="todo-text">{item}</p>
@@ -82,4 +68,4 @@ return;
     </div>
   );
 }
-export default Todo;
+export default TodoNew;

@@ -5,13 +5,13 @@ import Counter from "./components/Counter";
 import Table from "./components/Table"
 //import Gallery from "./components/Gallery";
 import GridGallery from "./components/GridGallery";
-import Todo from "./components/Todo";
+import TodoNew from "./components/TodoNew";
 import Card from "./components/Card";
 function App() {
   return (
     <div className="app">
       <Card/>
-      <Todo/>
+      <TodoNew/>
       {/* <Table/>
       <Counter />
 
