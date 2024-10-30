@@ -19,10 +19,14 @@ setPage(pageNum)
     }
     const url = "https://jsonplaceholder.typicode.com/posts"
     const fetchData = async() => {
-const response = await axios.get(url);
+await axios.get(url).then((res) => {
 
-console.log(response.data)
-setData(response.data)
+console.log(res.data)
+setData(res.data)
+}).catch((err) =>{
+    console.log(err)
+})
+
     }
     useEffect(() =>{
       fetchData()
@@ -33,23 +37,28 @@ setData(response.data)
         <div className="table-container">
             <h1 className="header">Table</h1>
     <table>
-        <tr>
+        <thead>
+            <tr>
             <th>SL.NO</th>
             <th>Title</th>
             <th>Body</th>
             <th>UserId</th>
-        </tr>
-        
+            </tr>
+           
+        </thead>
+          <tbody >
             {
                 currentPagedata.map((item,index) => (
-                    <tr>
+                  <tr key={item.id}>
+                 
                     <td>{item.id}</td>
                     <td>{item.title}</td>
                     <td>{item.body}</td>
                     <td>{item.userId}</td>
-                    </tr>
+                   </tr>
                 ))
             }
+             </tbody>
         
     </table>
     <div className="pagination">

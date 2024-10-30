@@ -17,8 +17,8 @@ function Gallery() {
   return (
     <div className="gallery-container">
       {data.map((item) => (
-        <div>
-          <img key={item.id} className="image-sty" src={item.download_url} alt="gallery images" />
+        <div key={item.id}>
+          <img  className="image-sty" src={item.download_url} alt={item.author} />
         </div>
       ))}
     </div>

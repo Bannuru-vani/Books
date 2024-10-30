@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import "./counter.css";
 import { textAlign } from "@mui/system";
 function Counter() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   const addCount = () => {
    // setCount(count + 1);
    setCount((prev) => prev +1)
   };
 
   const decCount = () => {
-    if(count < 0){
+    if(count <= 0){
         setCount(0)
     }
     else{
