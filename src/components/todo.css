@@ -1,0 +1,55 @@
+.todo-header{
+    text-align: center;
+    background-color: violet;
+    color:white;
+    font-size: 22px;
+    padding:20px;
+}
+.todo-container{
+    width:500px;
+  height:1000px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin:0px auto;
+}
+.todo-items{
+    background-color: white;
+    height:max-content;
+    padding:10px;
+}
+.add-todoinput{
+    width:323px;
+    padding:10px;
+}
+.todo-inputs{
+    display: flex;
+    flex-direction: row;
+    margin:40px;
+    border:1px solid violet
+
+}
+.todo-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.add-button{
+        width: 54px;
+    font-size: 20px;
+    padding: 10px;
+    background: violet;
+    color: white;
+    border:none
+}
+.delete-button{
+    color:violet;
+    font-size: 24px;
+    border:none;
+    background:none;
+}
+.todo-text{
+    font-size: 20px;
+    font-family: sans-serif;
+}
