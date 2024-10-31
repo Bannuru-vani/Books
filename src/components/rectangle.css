@@ -1,0 +1,44 @@
+.horizantaltoverticalboxshadow{
+ 
+    width:300px;
+    background-color:orangered;
+    height:200px;
+   
+}
+.horizantaltoverticalboxshadow:hover{
+       box-shadow: 10px 10px green;
+
+}
+  /* 5px is blur effect*/
+.horizantaltoverticalboxshadowblur{
+    box-shadow: 10px 10px 5px green;
+   margin-top:20px;
+    width:300px;
+    background-color:orangered;
+    height:200px;
+   
+}
+.horizantaltoverticalboxshadowspread{
+    box-shadow: 10px 10px 5px 12px lightblue;
+   margin-top:20px;
+    width:300px;
+    background-color:orangered;
+    height:200px;
+   
+}
+.horizantaltoverticalboxshadowoutset{
+    box-shadow: 10px 10px 5px 12px red inset;
+   margin-top:20px;
+    width:300px;
+    background-color:orangered;
+    height:200px;
+   
+}
+.horizantaltoverticalboxshadowmultiple{
+    box-shadow: 5px 5px red,10px 10px blue,15px 15px 15px green;
+   margin-top:20px;
+    width:300px;
+    background-color:orangered;
+    height:200px;
+   
+}

@@ -7,11 +7,15 @@ import Table from "./components/Table"
 import GridGallery from "./components/GridGallery";
 import TodoNew from "./components/TodoNew";
 import Card from "./components/Card";
+import ContentCard from "./components/ConetentCards";
+// import Rectangles from "./components/Rectangles"
 function App() {
   return (
     <div className="app">
-      <Card/>
-      <TodoNew/>
+      {/* <Rectangles/> */}
+      <ContentCard/>
+      {/* <Card/>
+      <TodoNew/> */}
       {/* <Table/>
       <Counter />
 

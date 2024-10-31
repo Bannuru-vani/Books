@@ -1,0 +1,70 @@
+.contentcarddata{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(37, 31, 31);
+    border-radius: 4px;
+    width:32%;
+}
+.contentcard-Img{
+        height: 250px !important;
+    width: 220px !important;
+        border-radius: 4px 0px 0px 4px;
+}
+.contentcardcontainer{
+    display: flex;
+    width: 100%;flex-wrap: wrap;
+    gap: 20px;
+   
+    padding-top: 30px;
+    justify-content: center;
+   
+
+}
+.painationchar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.charecter-name{
+        font-size: 22px;
+    font-weight: 800;
+    margin-top: 10px;
+}.characterstatus{
+    margin-top: -16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.statuscon{
+        border-radius: 66px;
+       background-color: green;
+    width: 7px;
+    height: 8px;
+    margin-top:6px;
+}
+.location{
+    color:gray
+}
+.locationdata{
+    font-size: 19px;
+    color: lightgoldenrodyellow;
+    margin: 0px;
+
+}
+.contentcard-details{
+    margin-left: 20px;
+    color: white;
+}
+.pagination{
+    margin-top:20px;
+    text-align: center;
+}
+.button-styless{
+    width:100px;
+  margin:10px;
+  font-size: 20px;
+    padding:10px;
+    text-align: center;
+}
