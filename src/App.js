@@ -12,8 +12,9 @@ import ContentCard from "./components/ConetentCards";
 function App() {
   return (
     <div className="app">
+      <Login/>
       {/* <Rectangles/> */}
-      <ContentCard/>
+      {/* <ContentCard/> */}
       {/* <Card/>
       <TodoNew/> */}
       {/* <Table/>

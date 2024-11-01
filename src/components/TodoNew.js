@@ -19,6 +19,7 @@ function TodoNew() {
       setError(!error);
       return;
     }
+    setTodos("")
     let updatedList = [...todoList, todos];
     setTodoList(updatedList)
      localStorage.setItem(
@@ -31,7 +32,7 @@ function TodoNew() {
     if (getData.length) {
       setTodoList(getData);
     }
-  });
+  },[]);
 
   console.log(todoList);
 
