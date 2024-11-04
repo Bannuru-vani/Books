@@ -25,6 +25,10 @@
     align-items: baseline;
     gap: 20px;
 }
+.errorMessage{
+  color:red;
+  margin:0px;
+}
 .button-con {
   margin-top: 20px !important;
   background-image: linear-gradient(

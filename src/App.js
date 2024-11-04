@@ -8,6 +8,7 @@ import GridGallery from "./components/GridGallery";
 import TodoNew from "./components/TodoNew";
 import Card from "./components/Card";
 import ContentCard from "./components/ConetentCards";
+import ImageComponent from "./components/ImageComponent";
 // import Rectangles from "./components/Rectangles"
 function App() {
   return (

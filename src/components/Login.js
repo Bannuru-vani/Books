@@ -7,31 +7,58 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayScreen, setDisplayScreen] = useState(false);
+  const [errorName,setErrorName] = useState(false);
+  const [erroremail,setErroremail] = useState(false)
+  const[errorPassword,setErorPassword] = useState(false)
 
   const signupDetails = async () => {
     setDisplayScreen(true);
-    let signUpUrl = "https://blogs-k8y2.onrender.com/api/v1/auth/signup";
-
-    try {
-      await axios.post(signUpUrl, {
-        name: name,
-        email: email,
-        password: password,
-      });
-    } catch (err) {
-      console.log(err);
-    }
   };
+  const errorMessageName = (type) =>{
+    switch(type){
+      case (type === ""):
+       <p> Please Enter Name Id</p>
+       setErrorName(true)
+      break;
+      case(type.length >=3 ):
+      <p>Username wil be more than 3 character</p>
+       setErrorName(true)
+      break;
+      case(type.length <=25):
+      <p>UserName will be less than 25 characters</p>
+       setErrorName(true)
+      break;
+
+    }
+  }
+  console.log(errorMessageName,"errmes")
   const addLoginDetails = async () => {
     let loginUrl = "https://blogs-k8y2.onrender.com/api/v1/auth/login";
-
-    try {
-      await axios.post(loginUrl, {
-        email: "bannu@rahi.us",
-        password: "bannurahi@143",
-      });
-    } catch (err) {
-      console.log(err);
+    let signUpUrl = "https://blogs-k8y2.onrender.com/api/v1/auth/signup";
+    if (displayScreen == "true") {
+      try {
+        await axios.post(signUpUrl, {
+          name: name,
+          email: email,
+          password: password,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      if(password == "" && email == ""){
+        setErroremail(true);
+        setErorPassword(true)
+        return
+      }
+      try {
+        await axios.post(loginUrl, {
+          email: "bannu@rahi.us",
+          password: "bannurahi@143",
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
   return (
@@ -51,6 +78,7 @@ function Login() {
               <TextField
                 id="outlined-basic"
                 label="Name"
+                required
                 variant="outlined"
                 value={name}
                 onChange={(e) => setName(e.target.value)}></TextField>
@@ -58,25 +86,35 @@ function Login() {
           ) : (
             ""
           )}
+          <p></p>
           <p>Email Address</p>
           <TextField
             id="outlined-basic"
             label="Email"
+            required
             value={email}
             onChange={(e) => setEmail(e.target.value)}></TextField>
-
+            
+            <p className="errorMessage">{erroremail ? "Please Enter Email" : ""}</p>
           <p>Password</p>
 
           <TextField
             id="outlined-basic"
             label="Password"
+            required
             variant="outlined"
             value={password}
             onChange={(e) => setPassword(e.target.value)}></TextField>
-
-          <Button className="button-con" onClick={addLoginDetails}>
-            Login
-          </Button>
+                   <p className="errorMessage">{errorPassword ? "Please Enter Password" : ""}</p>
+          {displayScreen ? (
+            <Button className="button-con" onClick={addLoginDetails}>
+              Signup
+            </Button>
+          ) : (
+            <Button className="button-con" onClick={addLoginDetails}>
+              Login
+            </Button>
+          )}
 
           <p className="textgoo">
             If you are not Logged. Please{" "}
