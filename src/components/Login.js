@@ -35,13 +35,7 @@ function Login() {
     setErrorName("");
     console.log(name);
   };
-  // empty value tho signup click chey - please enter name Id ani vachindi
-  // one character type chesi signup cheste 3 characters di error vachindi
-  // same inkoti 25 kanna yekkuva type chesi signup cheste
-  // nen chusa ma, repload chesava hu - working?? ledu em chestunnav 2nd case working when it is empty which 2nd case?
-  // 2nd condtion working
-  // 1 st not working "" unnappudu error message rab=vatledu - vastunbdi chudu ma na dantlo ravatledu
-  //  okok wait nen email petta anduku
+
   const addLoginDetails = async () => {
     let loginUrl = "https://blogs-k8y2.onrender.com/api/v1/auth/login";
     let signUpUrl = "https://blogs-k8y2.onrender.com/api/v1/auth/signup";
