@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import { TextField, Button } from "@mui/material";
 import "./login.css";
 import axios from "axios";
@@ -7,55 +8,83 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayScreen, setDisplayScreen] = useState(false);
-  const [errorName,setErrorName] = useState(false);
-  const [erroremail,setErroremail] = useState(false)
-  const[errorPassword,setErorPassword] = useState(false)
-
+  const [errorName, setErrorName] = useState(false);
+  const [erroremail, setErroremail] = useState(false);
+  const [errorPassword, setErorPassword] = useState(false);
+  const [showToastify, setShowToastify] = useState(false);
+  // const toastifymessage = toast("Logged in successfull");
   const signupDetails = async () => {
     setDisplayScreen(true);
   };
-  const errorMessageName = (type) =>{
-    switch(type){
-      case (type === ""):
-       <p> Please Enter Name Id</p>
-       setErrorName(true)
-      break;
-      case(type.length >=3 ):
-      <p>Username wil be more than 3 character</p>
-       setErrorName(true)
-      break;
-      case(type.length <=25):
-      <p>UserName will be less than 25 characters</p>
-       setErrorName(true)
-      break;
 
+  const errorMessageName = (name) => {
+    if (name.length === 0) {
+      setErrorName("Please Enter Name Id");
+      // return once a validation check failed
+      return;
+    } else if (name.length <= 3) {
+      // idi name.length <= 3 kada
+      setErrorName("Username wil be more than 3 character");
+      return;
+    } else if (name.length >= 25) {
+      // ikkada kuda
+      setErrorName("UserName will be less than 25 characters");
+      return;
     }
-  }
-  console.log(errorMessageName,"errmes")
+    // if all 3 validation passed - empty the error
+    setErrorName("");
+    console.log(name);
+  };
+  // empty value tho signup click chey - please enter name Id ani vachindi
+  // one character type chesi signup cheste 3 characters di error vachindi
+  // same inkoti 25 kanna yekkuva type chesi signup cheste
+  // nen chusa ma, repload chesava hu - working?? ledu em chestunnav 2nd case working when it is empty which 2nd case?
+  // 2nd condtion working
+  // 1 st not working "" unnappudu error message rab=vatledu - vastunbdi chudu ma na dantlo ravatledu
+  //  okok wait nen email petta anduku
   const addLoginDetails = async () => {
     let loginUrl = "https://blogs-k8y2.onrender.com/api/v1/auth/login";
     let signUpUrl = "https://blogs-k8y2.onrender.com/api/v1/auth/signup";
-    if (displayScreen == "true") {
+
+    if (displayScreen === true) {
+      errorMessageName(name);
+      if (password === "" && email === "" && name === "") {
+        setErorPassword(true);
+        setErroremail(true);
+        // setErrorName(true); // - idi ikkada undakudadu ga idi tesey chudu
+        return;
+      }
       try {
-        await axios.post(signUpUrl, {
+        const data = await axios.post(signUpUrl, {
           name: name,
           email: email,
           password: password,
         });
+        console.log(data, "hhhh");
       } catch (err) {
         console.log(err);
       }
     } else {
-      if(password == "" && email == ""){
+      if (password === "" && email === "") {
         setErroremail(true);
-        setErorPassword(true)
-        return
+        setErorPassword(true);
+        return;
       }
       try {
-        await axios.post(loginUrl, {
-          email: "bannu@rahi.us",
-          password: "bannurahi@143",
+        const data = await axios.post(loginUrl, {
+          email: email,
+          password: password,
         });
+        if (data.status === 200) {
+          setShowToastify(true);
+
+          if (showToastify === true) {
+            toast.success("Success Notification !", {
+              position: "top-center",
+            });
+          }
+        }
+        console.log(data, "logintoken");
       } catch (err) {
         console.log(err);
       }
@@ -81,31 +110,38 @@ function Login() {
                 required
                 variant="outlined"
                 value={name}
-                onChange={(e) => setName(e.target.value)}></TextField>
+                onChange={(e) => setName(e.target.value)}
+              ></TextField>
             </>
           ) : (
             ""
           )}
-          <p></p>
+          <p>{errorName}</p>
           <p>Email Address</p>
           <TextField
             id="outlined-basic"
             label="Email"
+            type="email"
             required
             value={email}
-            onChange={(e) => setEmail(e.target.value)}></TextField>
-            
-            <p className="errorMessage">{erroremail ? "Please Enter Email" : ""}</p>
+            onChange={(e) => setEmail(e.target.value)}
+          ></TextField>
+          <p className="errorMessage">
+            {erroremail ? "Please Enter Email" : ""}
+          </p>
           <p>Password</p>
-
           <TextField
+            type="password"
             id="outlined-basic"
             label="Password"
             required
             variant="outlined"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}></TextField>
-                   <p className="errorMessage">{errorPassword ? "Please Enter Password" : ""}</p>
+            onChange={(e) => setPassword(e.target.value)}
+          ></TextField>
+          <p className="errorMessage">
+            {errorPassword ? "Please Enter Password" : ""}
+          </p>
           {displayScreen ? (
             <Button className="button-con" onClick={addLoginDetails}>
               Signup
@@ -115,7 +151,6 @@ function Login() {
               Login
             </Button>
           )}
-
           <p className="textgoo">
             If you are not Logged. Please{" "}
             <Button onClick={signupDetails} className="button-con">

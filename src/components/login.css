@@ -29,13 +29,10 @@
   color:red;
   margin:0px;
 }
-.button-con {
+.button-con{
   margin-top: 20px !important;
-  background-image: linear-gradient(
-    to right,
-    rgb(33, 33, 228),
-    rgb(97, 97, 219)
-  );
+  color:white !important;
+  background-color: blue !important;
   text-transform: capitalize !important;
 }
 
