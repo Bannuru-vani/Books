@@ -1,0 +1,9 @@
+.searchInnput{
+    width:300px;
+   margin:0px auto;
+    padding:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:10px;
+}

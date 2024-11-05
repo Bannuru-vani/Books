@@ -5,3 +5,23 @@
 .subheader{
     font-family: "Audiowide", sans-serif;
 }
+.imageStylecarddd{
+    height:300px;
+    width:300px;
+}
+.containercsrdd{
+    width:400px;
+    height:450px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin:0px auto;
+    box-shadow: 10px 10px 5px gray;
+
+}
+.caard{
+    height:100vh
+    
+}
