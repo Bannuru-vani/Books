@@ -14,10 +14,13 @@ import Wheatherapp from "./components/Wheatherapp";
 function App() {
   return (
     <div className="app">
-      <Wheatherapp />
+      <Login />
+      {/*   <Wheatherapp /> 
       {/*      <Login/> */}
-      {/* <Rectangles/> */}
-      {/* <ContentCard/> */}
+      {/* <Rectangles/> 
+         <ContentCard />
+        */}
+
       {/* <Card/>
       <TodoNew/> */}
       {/* <Table/>

@@ -11,24 +11,27 @@ function Wheatherapp() {
   console.log(storecities);
   useEffect(() => {
     inputRef.current.focus();
-    let initialCities = JSON.parse(localStorage.getItem("cityNames")) || [];
-    setStorecities(initialCities);
-    console.log(initialCities, "pp");
-    initialCities.forEach((city) => {
-      console.log(city);
-      addCity(city);
-    });
+    // let initialCities = JSON.parse(localStorage.getItem("cityNames")) || [];
+    // setStorecities(initialCities);
+    // console.log(initialCities, "pp");
+    // initialCities.forEach((city) => {
+    //   console.log(city);
+    //   addCity(city);
+    // });
   }, []);
   // first of all ila open place lo raste ela? function kaadu useEffect kaadu
   //   const storecityNames = [...setStorecity, cityName];
   //   console.log(storecityNames, "storecityNames");
   //   localStorage.setItem("cityName", JSON.stringify(cityName));
 
-  const addCity = async (city) => {
-    let payloadCity = city || cityName;
+  const addCity = async () => {
+    if (cityName === "") {
+      return;
+    }
+    // let payloadCity = city || cityName;
     try {
       let data = await axios.get(
-        `http://api.weatherapi.com/v1/current.json?q=${payloadCity}`,
+        `http://api.weatherapi.com/v1/current.json?q=${cityName}`,
         {
           headers: {
             key: "0443c6b2fe0b42368d2124335240311",
@@ -51,9 +54,9 @@ function Wheatherapp() {
       //first setkada cheyyalsindi - adi useEffect lo chestam first ye ma. hsuare ade rayi first hu chesa - kinda step chey
       // step one - push the cityname into storecities immutabilypush ikkada ela cheyyalo tattledu mind ki hjuu sorry artam ayyindi todo laga cheyyali
       // hu em kaadu le practice tho vastadi hu setchesam useeffect lo
-      let updatedCities = [...storecities, payloadCity];
-      setStorecities(updatedCities);
-      localStorage.setItem("cityNames", JSON.stringify(updatedCities));
+      // let updatedCities = [...storecities, payloadCity];
+      // setStorecities(updatedCities);
+      // localStorage.setItem("cityNames", JSON.stringify(updatedCities));
       setCityName("");
     } catch (err) {
       console.log(err);
@@ -93,12 +96,12 @@ function Wheatherapp() {
             </div>
           ))}
       </div>
-      <div className="buttonswhe">
-        <button className="primary">Primary</button>
-        <button className="secondary">Secondary</button>
-        <button className="disable">Disable</button>
-      </div>
     </div>
   );
 }
 export default Wheatherapp;
+// <div className="buttonswhe">
+//   <button className="primary">Primary</button>
+//   <button className="secondary">Secondary</button>
+//   <button className="disable">Disable</button>
+// </div>

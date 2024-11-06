@@ -47,18 +47,20 @@
 
 .statuscon{
         border-radius: 66px;
-       background-color: green;
+      
     width: 7px;
     height: 8px;
     margin-top:6px;
 }
 .location{
-    color:gray
+    color:gray;
+    line-height: 30px;margin: 0px;
 }
 .locationdata{
     font-size: 19px;
     color: lightgoldenrodyellow;
     margin: 0px;
+
 
 }
 .contentcard-details{

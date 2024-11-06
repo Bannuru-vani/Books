@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { TextField, Button } from "@mui/material";
 import "./login.css";
 import axios from "axios";
@@ -8,18 +9,30 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayScreen, setDisplayScreen] = useState(false);
-  const [errorName, setErrorName] = useState(false);
-  const [erroremail, setErroremail] = useState(false);
-  const [errorPassword, setErorPassword] = useState(false);
+  const [errorName, setErrorName] = useState("");
+  const [erroremail, setErroremail] = useState("");
+  const [errorPassword, setErorPassword] = useState("");
   const [showToastify, setShowToastify] = useState(false);
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   // const toastifymessage = toast("Logged in successfull");
-  const signupDetails = async () => {
+  const signupDetails = () => {
     setDisplayScreen(true);
+  };
+  const LoginDetails = () => {
+    setDisplayScreen(false);
+  };
+  const emailValidation = (email) => {
+    if (emailRegex.test(email) && email === "") {
+      setErroremail("");
+      return "";
+    } else {
+      setErroremail("Please Enter Valid email");
+    }
   };
 
   const errorMessageName = (name) => {
     if (name.length === 0) {
-      setErrorName("Please Enter Name Id");
+      setErrorName("Please Enter Name");
       // return once a validation check failed
       return;
     } else if (name.length <= 3) {
@@ -35,6 +48,17 @@ function Login() {
     setErrorName("");
     console.log(name);
   };
+  const errorPasswordfun = (password) => {
+    if (password === "") {
+      setErorPassword("Please Enter Password");
+      return;
+    } else if (password.length <= 6) {
+      setErorPassword("Password length should be more than 6");
+      return;
+    }
+    setErorPassword("");
+    return;
+  };
 
   const addLoginDetails = async () => {
     let loginUrl = "https://blogs-k8y2.onrender.com/api/v1/auth/login";
@@ -42,8 +66,10 @@ function Login() {
 
     if (displayScreen === true) {
       errorMessageName(name);
+      errorPasswordfun(password);
+      emailValidation(email);
       if (password === "" && email === "" && name === "") {
-        setErorPassword(true);
+        // setErorPassword(true);
         setErroremail(true);
         // setErrorName(true); // - idi ikkada undakudadu ga idi tesey chudu
         return;
@@ -54,14 +80,28 @@ function Login() {
           email: email,
           password: password,
         });
+        if (data.status === 200) {
+          setShowToastify(true);
+          setName("");
+
+          setEmail("");
+          setPassword("");
+          setErorPassword("");
+          setErrorName("");
+          setErroremail("");
+          if (showToastify === true) {
+            toast.success("Successfully Signup !");
+          }
+        }
         console.log(data, "hhhh");
       } catch (err) {
         console.log(err);
       }
     } else {
+      errorPasswordfun(password);
+      emailValidation(email);
       if (password === "" && email === "") {
-        setErroremail(true);
-        setErorPassword(true);
+        // setErorPassword(true);
         return;
       }
       try {
@@ -69,14 +109,17 @@ function Login() {
           email: email,
           password: password,
         });
+        debugger;
         if (data.status === 200) {
           setShowToastify(true);
-
           if (showToastify === true) {
-            toast.success("Success Notification !", {
-              position: "top-center",
-            });
+            toast.success("Logged in Successfully !");
           }
+          setEmail("");
+          setPassword("");
+          setErorPassword("");
+
+          setErroremail("");
         }
         console.log(data, "logintoken");
       } catch (err) {
@@ -110,7 +153,7 @@ function Login() {
           ) : (
             ""
           )}
-          <p>{errorName}</p>
+          <p className="errorMessage">{errorName}</p>
           <p>Email Address</p>
           <TextField
             id="outlined-basic"
@@ -120,9 +163,7 @@ function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></TextField>
-          <p className="errorMessage">
-            {erroremail ? "Please Enter Email" : ""}
-          </p>
+          <p className="errorMessage">{erroremail}</p>
           <p>Password</p>
           <TextField
             type="password"
@@ -133,9 +174,7 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></TextField>
-          <p className="errorMessage">
-            {errorPassword ? "Please Enter Password" : ""}
-          </p>
+          <p className="errorMessage">{errorPassword}</p>
           {displayScreen ? (
             <Button className="button-con" onClick={addLoginDetails}>
               Signup
@@ -145,14 +184,32 @@ function Login() {
               Login
             </Button>
           )}
-          <p className="textgoo">
-            If you are not Logged. Please{" "}
-            <Button onClick={signupDetails} className="button-con">
-              Sign Up
-            </Button>
-          </p>
+          {displayScreen ? (
+            <p className="textgoo">
+              If you are already Signup. Please{" "}
+              <Button onClick={LoginDetails} className="button-con">
+                Login
+              </Button>
+            </p>
+          ) : (
+            <p className="textgoo">
+              If you are not Logged. Please{" "}
+              <Button onClick={signupDetails} className="button-con">
+                Sign Up
+              </Button>
+            </p>
+          )}
         </div>
       </div>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+      ></ToastContainer>
     </div>
   );
 }

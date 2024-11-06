@@ -41,13 +41,15 @@
     padding: 10px;
     background: violet;
     color: white;
-    border:none
+    border:none;
+    cursor: pointer;
 }
 .delete-button{
     color:violet;
     font-size: 24px;
     border:none;
     background:none;
+    cursor: pointer;
 }
 .todo-text{
     font-size: 20px;
