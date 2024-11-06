@@ -13,6 +13,7 @@ function Login() {
   const [erroremail, setErroremail] = useState("");
   const [errorPassword, setErorPassword] = useState("");
   const [showToastify, setShowToastify] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   // const toastifymessage = toast("Logged in successfull");
   const signupDetails = () => {
@@ -22,7 +23,11 @@ function Login() {
     setDisplayScreen(false);
   };
   const emailValidation = (email) => {
-    if (emailRegex.test(email) && email === "") {
+    if (email === "") {
+      setErroremail("Please enter email");
+      return;
+    }
+    if (emailRegex.test(email)) {
       setErroremail("");
       return "";
     } else {
@@ -30,6 +35,9 @@ function Login() {
     }
   };
 
+  const notify = () => {
+    toast.error(errorMessage);
+  };
   const errorMessageName = (name) => {
     if (name.length === 0) {
       setErrorName("Please Enter Name");
@@ -52,7 +60,7 @@ function Login() {
     if (password === "") {
       setErorPassword("Please Enter Password");
       return;
-    } else if (password.length <= 6) {
+    } else if (password.length < 6) {
       setErorPassword("Password length should be more than 6");
       return;
     }
@@ -95,13 +103,15 @@ function Login() {
         }
         console.log(data, "hhhh");
       } catch (err) {
-        console.log(err);
+        setErroremail(err.response.data.message);
+        console.log(err.response.data.message);
       }
     } else {
       errorPasswordfun(password);
       emailValidation(email);
       if (password === "" && email === "") {
         // setErorPassword(true);
+        notify();
         return;
       }
       try {
@@ -123,7 +133,7 @@ function Login() {
         }
         console.log(data, "logintoken");
       } catch (err) {
-        console.log(err);
+        setErrorMessage(err.response.data.message);
       }
     }
   };

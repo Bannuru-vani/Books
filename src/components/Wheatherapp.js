@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 import "./wheather.css";
 function Wheatherapp() {
   const [cityName, setCityName] = useState("");
   const inputRef = useRef(null);
-
+  const [errorMessage, setErroraMessage] = useState("");
   const [storecities, setStorecities] = useState([]); // idi extra state unni le ilane cheddam // ikkada localstorage nunchi get chey ippudu initial state ki
   const [allWheathers, setallWheathers] = useState([]);
   //   const [multipleWheathers,setMultipleWheathers] = useState([])
@@ -38,7 +39,9 @@ function Wheatherapp() {
           },
         }
       );
-
+      if (data.length > 0) {
+        setCityName("");
+      }
       const displayData = {
         name: data?.data?.location?.name,
         degrees: data?.data?.current?.temp_c,
@@ -48,22 +51,17 @@ function Wheatherapp() {
 
       setallWheathers((prev) => [...prev, displayData]);
 
-      //naku vacbunnattu rasta chudu
-      // ikkada UI ki kotta city add avtundi ga hu
-      // ippudu ikkada cityName untadi, ikkada push cheddam localstorage ki sare na?
-      //first setkada cheyyalsindi - adi useEffect lo chestam first ye ma. hsuare ade rayi first hu chesa - kinda step chey
-      // step one - push the cityname into storecities immutabilypush ikkada ela cheyyalo tattledu mind ki hjuu sorry artam ayyindi todo laga cheyyali
-      // hu em kaadu le practice tho vastadi hu setchesam useeffect lo
-      // let updatedCities = [...storecities, payloadCity];
-      // setStorecities(updatedCities);
-      // localStorage.setItem("cityNames", JSON.stringify(updatedCities));
       setCityName("");
     } catch (err) {
-      console.log(err);
+      setErroraMessage(err.response.data.error.message);
+      notify();
+      console.log(err.response.data.error.message);
     }
   };
 
-  // nen urke steps rasta nuvvu chey ok na? hu
+  const notify = () => {
+    toast.warning(errorMessage);
+  };
   console.log(allWheathers, "allWheathers");
   return (
     <div className="wheather-container">
@@ -96,6 +94,14 @@ function Wheatherapp() {
             </div>
           ))}
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+      ></ToastContainer>
     </div>
   );
 }

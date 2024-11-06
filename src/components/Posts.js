@@ -43,7 +43,7 @@ function Posts() {
           </thead>
           <tbody>
             {data.map((item) => (
-              <tr>
+              <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.title}</td>
                 <td>{item.body}</td>
