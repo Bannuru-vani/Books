@@ -10,11 +10,20 @@ import Card from "./components/Card";
 import ContentCard from "./components/ConetentCards";
 import ImageComponent from "./components/ImageComponent";
 import Wheatherapp from "./components/Wheatherapp";
+import Carosal from "./components/Carosal";
 // import Rectangles from "./components/Rectangles"
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import Loginlogout from "./components/Loginlogout";
 function App() {
   return (
     <div className="app">
-      <Login />
+      <>
+        <Routes>
+          <Route path="/" element={<Loginlogout />} />
+          <Route path="/home" element={<ImageComponent />} />
+        </Routes>
+      </>
+
       {/*   <Wheatherapp /> 
       {/*      <Login/> */}
       {/* <Rectangles/> 

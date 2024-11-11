@@ -18,3 +18,13 @@
     font-size:22px;
  
 }
+.logout-but{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    display: flex;
+    width: 100%;
+    background: white;
+    font-size: 25px;
+    border: none;
+}

@@ -1,0 +1,17 @@
+.input-field{
+width:30%;
+padding:10px;
+}
+.logilog-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px
+}
+.button-con{
+    width:100px;
+    padding: 10px;
+    border: none;
+  
+}

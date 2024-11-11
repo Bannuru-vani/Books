@@ -1,0 +1,17 @@
+.image-carousal{
+    width:800px;
+    height:100vh;
+}
+.image-con{
+    display: flex;
+    justify-content: center;
+gap:20px
+}
+.carousal-but{
+    background: none;
+    border: transparent;
+}
+.carousal-header{
+    text-align: center;
+    font-size: 30px;
+}
