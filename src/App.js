@@ -14,12 +14,13 @@ import Carosal from "./components/Carosal";
 // import Rectangles from "./components/Rectangles"
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Loginlogout from "./components/Loginlogout";
+import Todo from "./components/Todo";
 function App() {
   return (
     <div className="app">
       <>
         <Routes>
-          <Route path="/" element={<Loginlogout />} />
+          <Route path="/" element={<Todo />} />
           <Route path="/home" element={<ImageComponent />} />
         </Routes>
       </>
