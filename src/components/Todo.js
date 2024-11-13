@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaPlusSquare } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
 import { MdDeleteOutline, MdOutlineModeEdit } from "react-icons/md";
 import "./todo.css";
 import axios from "axios";
@@ -7,7 +8,7 @@ function Todo() {
   const [todos, setTodos] = useState("");
   const [todoList, setTodoList] = useState([]);
   const [edit, setEdit] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [editinitaltodo, setEditInitialtodo] = useState("");
   useEffect(() => {
     fetchTodos();
@@ -20,6 +21,7 @@ function Todo() {
       setTodoList(data.data.todos);
     } catch (err) {
       console.log(err);
+      // setError(err)
     }
   };
   const handleChange = (e) => {
@@ -30,19 +32,31 @@ function Todo() {
     }
   };
   const addTodos = async () => {
-    if (todos === "") {
-      setError(!error);
-      return;
-    }
-    let data = await axios.post(
-      "https://blogs-k8y2.onrender.com/api/v1/todo/create",
-      {
-        task: todos,
-        priority: "high",
+    debugger;
+    try {
+      // if (todos === "") {
+      //   // setError(!error);
+      //   return;
+      // }
+      let data = await axios.post(
+        "https://blogs-k8y2.onrender.com/api/v1/todo/create",
+        {
+          task: todos,
+          priority: "high",
+        }
+      );
+      if (data.status === 201) {
+        toast.success("Todo has been created");
+        setTodos("");
       }
-    );
-    fetchTodos();
-    console.log(data);
+      fetchTodos();
+
+      console.log(data, "stt");
+    } catch (err) {
+      console.log(err.response.data.message, "dd");
+      setError(err.response.data.message);
+    }
+
     //   let updatedList = [...todoList, todos]
     //   setTodoList(updatedList);
     //   localStorage.setItem("todoList", JSON.stringify(updatedList));
@@ -124,8 +138,15 @@ function Todo() {
             <FaPlusSquare />
           </button>
         </div>
-
-        <p>{error ? "please add todo" : ""}</p>
+        <ToastContainer
+          position="top-right"
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+        ></ToastContainer>
+        <p style={{ color: "red", textAlign: "center" }}>{error}</p>
         {todoList.map((item, index) => (
           <div key={index} className="todo-item">
             <p className="todo-text">{item.task}</p>

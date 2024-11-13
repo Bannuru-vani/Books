@@ -32,7 +32,12 @@
 .button-con{
   margin-top: 20px !important;
   color:white !important;
+  width: 100% !important;
   background-color: blue !important;
   text-transform: capitalize !important;
 }
+.button-con1{
+  text-decoration: underline !important;
+}
 
+  

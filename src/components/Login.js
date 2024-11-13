@@ -12,7 +12,6 @@ function Login() {
   const [errorName, setErrorName] = useState("");
   const [erroremail, setErroremail] = useState("");
   const [errorPassword, setErorPassword] = useState("");
-  const [showToastify, setShowToastify] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   // const toastifymessage = toast("Logged in successfull");
@@ -89,7 +88,7 @@ function Login() {
           password: password,
         });
         if (data.status === 200) {
-          setShowToastify(true);
+          toast.success("Successfully Signup !");
           setName("");
 
           setEmail("");
@@ -97,9 +96,6 @@ function Login() {
           setErorPassword("");
           setErrorName("");
           setErroremail("");
-          if (showToastify === true) {
-            toast.success("Successfully Signup !");
-          }
         }
         console.log(data, "hhhh");
       } catch (err) {
@@ -121,10 +117,8 @@ function Login() {
         });
         debugger;
         if (data.status === 200) {
-          setShowToastify(true);
-          if (showToastify === true) {
-            toast.success("Logged in Successfully !");
-          }
+          toast.success("Logged in Successfully !");
+
           setEmail("");
           setPassword("");
           setErorPassword("");
@@ -197,14 +191,14 @@ function Login() {
           {displayScreen ? (
             <p className="textgoo">
               If you are already Signup. Please{" "}
-              <Button onClick={LoginDetails} className="button-con">
+              <Button onClick={LoginDetails} className="button-con1">
                 Login
               </Button>
             </p>
           ) : (
             <p className="textgoo">
               If you are not Logged. Please{" "}
-              <Button onClick={signupDetails} className="button-con">
+              <Button onClick={signupDetails} className="button-con1">
                 Sign Up
               </Button>
             </p>

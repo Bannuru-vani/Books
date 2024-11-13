@@ -7,7 +7,7 @@
 }
 .todo-container{
     width:500px;
-  height:1000px;
+  /* height:1000px; */
   position: relative;
     display: flex;
     justify-content: center;
@@ -55,6 +55,7 @@
 .todo-text{
     font-size: 20px;
     font-family: sans-serif;
+    width:300px;
 }
 .edit-con{
     width:200px;
