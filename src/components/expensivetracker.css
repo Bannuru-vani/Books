@@ -1,0 +1,83 @@
+.expensive-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.expensive-amount{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width:400px;
+   
+}
+.button-add{
+    background-color: black;
+    color:white;
+    height:30px;
+}
+.bal-amo{
+    font-weight: 700;
+}
+.expensiveinput{
+    border: 1px solid black;
+    height:200px;
+    width:400px;
+    padding:10px;
+
+}
+.inputexp{
+    width:300px;
+    padding:10px;
+    margin-bottom: 15px;
+    margin-left: 28px;
+}
+.radiostyle{
+    display: flex;
+}
+.radio-container{
+    display: flex;
+    margin-left: 23px;
+    gap:20px
+}
+.add-transa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.trasaction-continer{
+    width:400px
+}
+.searchexp{
+    background-color: lightgray;
+    width:400px;
+    border-radius: 10px;
+    border:none;
+    padding: 10px;
+    color: black;
+    margin-bottom: 10px;
+}
+.categaryy{
+    width: 400px;
+    border: 1px solid lightgray;
+    font-size: 16px;
+    padding: 10px;
+    display: flex;justify-content: space-between;
+}
+.expinc{
+    border:1px solid black;
+   padding-left: 10px;
+    width: 250px;
+    /* display: flex; */
+    /* gap: 10px; */
+    height: 88px;
+
+}
+.expinc1{
+    display: flex;
+ 
+    /* margin: 10px; */
+  
+    margin-top: 21px;
+}

@@ -15,13 +15,14 @@ import Carosal from "./components/Carosal";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Loginlogout from "./components/Loginlogout";
 import Todo from "./components/Todo";
+import ExpenseTraker from "./components/ExpenseTraker";
 import Dashboard from "./components/Dashboard";
 function App() {
   return (
     <div className="app">
       <>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<ExpenseTraker />} />
           <Route path="/home" element={<ImageComponent />} />
         </Routes>
       </>
